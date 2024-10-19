@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+:root {
+  --dark-bg-color: hsl(207, 26%, 17%);
+  --article-color: hsl(209, 23%, 22%);
+  --text-color: hsl(0, 0%, 100%);
+  --light-mode-text: hsl(200, 15%, 8%);
+  --light-mode-input: hsl(0, 0%, 52%);
+  --light-mode-background: hsl(0, 0%, 98%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: var(--dark-bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s;
+}
+
+body.light-theme {
+  background-color: var(--light-mode-background);
+  color: var(--light-mode-text);
+}
+
+/* header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2b3743;
+  padding: 10px 20px;
+}
+
+/* filter */
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.filter .form-control {
+  width: 100%;
+}
+
+.filter .form-control input {
+  background-color: #2b3743;
+  border: none;
+  outline: none;
+  padding: 12px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  width: 100%;
+  margin: 0 0 30px;
+}
+
+.filter .form-control input::placeholder {
+  color: #fff;
+}
+
+.filter .region-filter .select {
+  background-color: #2b3743;
+  color: #fff;
+  font-family: inherit;
+  padding: 12px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding: 20px;
+  width: calc(100% - 40px); /* Ensure the grid takes full width minus padding */
+  margin: 0 auto; /* Center the grid */
+}
+
+.grid article {
+  background-color: #2b3743; /* Original dark theme background color */
+  border-radius: 5px; /* Rounded corners for cards */
+  display: flex; /* Flexbox for card layout */
+  flex-direction: column; /* Column layout for content */
+  height: 100%; /* Allow cards to fill height */
+  overflow: hidden;
+  transition: background-color 0.4s; /* Smooth transition */
+}
+
+/* Light theme styles for cards */
+body.light-theme .grid article {
+  background-color: hsl(0, 0%, 100%); /* Light theme background for cards */
+  color: var(--light-mode-text); /* Adjust text color for light theme */
+}
+
+.grid .details {
+  padding: 20px; /* Adjusted padding */
+  flex-grow: 1; /* Allow the details section to grow */
+  transition: color 0.4s; /* Smooth transition for text color */
+}
+
+/* Light theme styles for card details */
+body.light-theme .grid .details {
+  color: var(--light-mode-text); /* Adjust text color for light theme */
+}
+
+/* Adjust headings in light theme */
+body.light-theme .grid .details h3,
+body.light-theme .grid .details h4 {
+  color: var(--light-mode-text); /* Heading color in light theme */
+}
+
+.grid article img {
+  border-radius: 5px 5px 0 0;
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.grid .details h3 {
+  padding-bottom: 10px;
+}
+
+.grid .details h4 {
+  padding-bottom: 10px;
+}
+
+.grid .details h4 span {
+  font-weight: 300;
+}
+
+.btn {
+  background-color: red;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.btn-light {
+  background-color: var(--article-color);
+  border: 2px solid var(--article-color);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .filter {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .filter .form-control {
+    width: auto;
+  }
+
+  .filter .form-control input {
+    width: auto;
+    margin: 0;
+  }
+
+  .filter .region-filter {
+    width: auto;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .grid,
+  .filter.header {
+    padding: 20px 100px;
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+  }
+}
